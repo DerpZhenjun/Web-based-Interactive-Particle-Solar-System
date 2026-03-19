@@ -1,3 +1,5 @@
+# https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/
+
 This template provides a professional, high-performance setup for an interactive 3D cosmos. It integrates **React-Three-Fiber** for GPU-accelerated particle rendering and **MediaPipe** for touchless gesture navigation.
 
 # 🌌 Interactive Particle Solar System
