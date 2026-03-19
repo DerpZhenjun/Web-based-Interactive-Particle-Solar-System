@@ -21,18 +21,15 @@ export default function HandTracker({ onReady }) {
 
 const hands = new Hands({
         locateFile: (file) => {
-            // 利用 Vite 环境变量，完美兼顾本地与线上
-            if (import.meta.env.DEV) {
-                // 如果是本地开发环境 (npm run dev)，直接使用根目录相对路径
-                const localUrl = `/mediapipe/${file}`;
-                console.log("【本地开发】加载模型: ", localUrl);
-                return localUrl;
-            } else {
-                // 如果是线上生产环境 (打包后部署到 GitHub Pages)，使用绝对路径防丢失
-                const prodUrl = `https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/mediapipe/${file}`;
-                console.log("【线上生产】强制加载绝对路径: ", prodUrl);
-                return prodUrl;
-            }
+            // 获取 Vite 统一的基准路径
+            const baseUrl = import.meta.env.BASE_URL;
+            
+            // 拼装路径：确保以 baseUrl 开头，指向 mediapipe 文件夹
+            // 结果会是: /Web-based-Interactive-Particle-Solar-System/mediapipe/xxx
+            const path = `${baseUrl}mediapipe/${file}`;
+            
+            console.log("🚀 当前模型加载路径:", path);
+            return path;
         }
     });
     hands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.75, minTrackingConfidence: 0.75 });
