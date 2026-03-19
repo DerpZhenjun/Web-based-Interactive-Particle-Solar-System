@@ -5,8 +5,14 @@
 ![Tech](https://img.shields.io/badge/Tech-React%20%7C%20Three.js%20%7C%20MediaPipe-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-🌍 **Experience it live:** [https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/](https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/)
+### 
+🌍 **Experience it live:** [https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/](https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/)  
+*(First-time visit may require a short loading period for assets.)*
 
+### 💡 建议
+考虑到你的项目是**基于 Web 的交互式粒子系统**，用户可能会因为首屏空白而提前关闭网页。我建议使用 **选项 2**，因为它在 GitHub 的样式中会有一个灰色的边框提示，看起来非常正式且不容易被忽略。
+
+需要我帮你把刚才讨论的**图片调整代码**和这段**加载提示**整合成一整个 README 的片段吗？
 ---
 
 ## 📺 Video Demonstration
