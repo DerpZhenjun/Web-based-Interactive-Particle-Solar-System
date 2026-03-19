@@ -98,8 +98,3 @@ I am continuously refining the project. Current work-in-progress items include:
 -----
 
 **Developed by [@DerpZhenjun](https://www.google.com/search?q=https://github.com/DerpZhenjun)** *Crafted with ✨, C/C++ logic, and Star-dust.*
-
-```
-
-You can copy and paste this directly into your GitHub repository. Would you like me to walk you through how to properly record and embed that video demo once you are ready?
-```
