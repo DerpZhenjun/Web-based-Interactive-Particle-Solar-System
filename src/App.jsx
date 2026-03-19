@@ -64,6 +64,30 @@ export default function App() {
     // 【修改点】：将 vw/vh 改为 100%，并锁定绝对定位，彻底锁死布局边界
     <div style={{ width: '100%', height: '100%', backgroundColor: '#000', overflow: 'hidden', position: 'absolute', top: 0, left: 0 }}>
       
+      {/* ========================================== */}
+      {/* 🚀 赛博朋克加载遮罩层 (解决 20MB 模型下载白屏问题) */}
+      {/* ========================================== */}
+      {!isTrackerReady && (
+        <div style={{
+          position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+          backgroundColor: '#000', display: 'flex', flexDirection: 'column', 
+          justifyContent: 'center', alignItems: 'center', zIndex: 9999, color: '#00ffcc',
+          fontFamily: 'monospace', letterSpacing: '2px'
+        }}>
+          <div style={{
+             width: '50px', height: '50px', border: '3px solid rgba(0,255,204,0.3)',
+             borderTop: '3px solid #00ffcc', borderRadius: '50%', animation: 'spin 1s linear infinite',
+             marginBottom: '20px'
+          }}></div>
+          <h2>INITIATING NEURAL ENGINE...</h2>
+          <p style={{ color: '#aaa', fontSize: '14px', marginTop: '10px' }}>
+            Downloading AI Models ( ~20MB ). Please wait.
+          </p>
+          {/* 注入 CSS 动画帧 */}
+          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
+
       {/* 1. 核心手势追踪器 */}
       <HandTracker onReady={() => setIsTrackerReady(true)} />
 
