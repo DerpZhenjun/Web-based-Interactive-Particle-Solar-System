@@ -1,0 +1,24 @@
+/* 1. 强制重置所有元素的内外边距 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. 彻底锁死根节点的大小，使用 100% 而不是 100vw/vh 可以避免有些系统下滚动条宽度计算的 Bug */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* 暴力切断滚动条 */
+  background-color: #000; /* 宇宙黑底 */
+  
+  /* 禁用移动端/触屏的默认下拉刷新和滑动回退行为 */
+  overscroll-behavior: none; 
+  touch-action: none; 
+}
+
+/* 3. 消除 Canvas 默认的行内元素底部间隙 */
+canvas {
+  display: block;
+  outline: none;
+}

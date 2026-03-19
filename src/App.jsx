@@ -15,7 +15,10 @@ import Neptune from './components/Neptune';
 import SolarSystemOverview from './components/SolarSystemOverview';
 import FeaturePanel from './components/FeaturePanel';
 
-// --- 新增：独立于 React 渲染周期的摄像机控制器 ---
+// 【修复核心】：必须引入写好的全局/全屏样式！
+import './App.css'; 
+
+// --- 独立于 React 渲染周期的摄像机控制器 ---
 // 它在底层的 requestAnimationFrame 中运行，实现电影级平滑推拉
 function CameraController() {
   useFrame((state) => {
@@ -58,7 +61,8 @@ export default function App() {
   };
 
   return (
-    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
+    // 【修改点】：将 vw/vh 改为 100%，并锁定绝对定位，彻底锁死布局边界
+    <div style={{ width: '100%', height: '100%', backgroundColor: '#000', overflow: 'hidden', position: 'absolute', top: 0, left: 0 }}>
       
       {/* 1. 核心手势追踪器 */}
       <HandTracker onReady={() => setIsTrackerReady(true)} />
