@@ -13,8 +13,7 @@ const PLANET_DB = {
   NEPTUNE: { title: "NEPTUNE", color: "#274687", type: "ICE GIANT", info: "SUPERSONIC WINDS" },
 };
 
-// 接收从 App 传来的 isLoading 和 onToggleFullscreen 函数
-export default function Overlay({ isLoading, onToggleFullscreen }) {
+export default function Overlay({ onToggleFullscreen }) {
   const { systemState, currentView } = useGestureStore();
 
   let statusText = systemState === 'IDLE' ? "STANDBY / AUTO-ORBIT" : (systemState === 'TRACKING' ? "FULL HAND CONTROL" : "MAGNETIC LOCK");
@@ -46,29 +45,23 @@ export default function Overlay({ isLoading, onToggleFullscreen }) {
         .author-btn { position: absolute; top: 40px; right: 40px; z-index: 10; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); color: #aaa; padding: 10px 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; backdrop-filter: blur(8px); }
         .author-btn span { color: #fff; font-weight: bold; }
 
-        /* 新增：全屏按钮样式 */
         .fullscreen-btn { 
             position: absolute; top: 90px; right: 40px; z-index: 10; 
             background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); 
             color: #aaa; padding: 10px 20px; font-size: 0.75rem; text-transform: uppercase; 
             letter-spacing: 3px; backdrop-filter: blur(8px); cursor: pointer; transition: all 0.3s ease;
+            pointer-events: auto; /* 关键：确保按钮可点击 */
         }
         .fullscreen-btn:hover { border-color: #00ff88; color: #fff; box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); }
 
-        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; color: #fff; font-size: 1rem; letter-spacing: 6px; font-family: monospace; animation: blink 1s infinite; background: rgba(0,0,0,0.7); padding: 20px 40px; border: 1px solid #333; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         .divider { width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 15px 0; }
         .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 15px; margin-top: 10px; }
         .cmd-key { color: ${currentInfo.color}; font-weight: bold; transition: color 0.5s ease; display: inline-block; width: 35px;}
       `}</style>
       
-      {/* 顶部按钮组 */}
       <div className="author-btn">SYSTEM BY <span>DerpZhenjun</span></div>
       
-      {/* 触发全屏的互动按钮 */}
       <button className="fullscreen-btn" onClick={onToggleFullscreen}>[F] FULL SCREEN</button>
-
-      {isLoading && <div className="loading">CALIBRATING NEURAL SENSORS...</div>}
 
       <div className="ui-layer">
         <div className="glass-panel">
@@ -97,7 +90,7 @@ export default function Overlay({ isLoading, onToggleFullscreen }) {
                   <div style={{color: '#aaa'}}>&gt; <span className="cmd-key">[✋]</span> OVERVIEW</div>
                 </div>
                 <div className="divider"></div>
-                <span style={{color: '#777', fontSize: '0.75rem'}}>* HOLD FINGERS 0.5s TO INITIATE WARP JUMP</span><br/>
+                <span style={{color: '#777', fontSize: '0.75rem'}}>* HOLD FINGERS 0.4s TO INITIATE WARP JUMP</span><br/>
                 <span style={{color: '#777', fontSize: '0.75rem'}}>* PINCH TO SCALE / FIST TO RESET POSITION</span>
               </>
             ) : (

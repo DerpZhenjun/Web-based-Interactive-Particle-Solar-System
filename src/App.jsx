@@ -15,25 +15,17 @@ import Neptune from './components/Neptune';
 import SolarSystemOverview from './components/SolarSystemOverview';
 import FeaturePanel from './components/FeaturePanel';
 
-// 【修复核心】：必须引入写好的全局/全屏样式！
 import './App.css'; 
 
-// --- 独立于 React 渲染周期的摄像机控制器 ---
-// 它在底层的 requestAnimationFrame 中运行，实现电影级平滑推拉
 function CameraController() {
   useFrame((state) => {
-    // 实时读取 Zustand 状态，不引起组件重渲染
     const currentView = useGestureStore.getState().currentView;
-    // 太阳系总览拉远到 150，单体星球拉近到 100
     const targetZ = currentView === 'HOME' ? 150 : 100;
-    
-    // 平滑插值 (Lerp) 推拉镜头
     state.camera.position.z += (targetZ - state.camera.position.z) * 0.05;
   });
   return null;
 }
 
-// --- 核心 App 组件 ---
 export default function App() {
   const [isTrackerReady, setIsTrackerReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -61,29 +53,27 @@ export default function App() {
   };
 
   return (
-    // 【修改点】：将 vw/vh 改为 100%，并锁定绝对定位，彻底锁死布局边界
     <div style={{ width: '100%', height: '100%', backgroundColor: '#000', overflow: 'hidden', position: 'absolute', top: 0, left: 0 }}>
       
-      {/* ========================================== */}
-      {/* 🚀 赛博朋克加载遮罩层 (解决 20MB 模型下载白屏问题) */}
-      {/* ========================================== */}
+      {/* 🚀 赛博朋克全屏加载层：当模型（20MB）正在下载时显示 */}
       {!isTrackerReady && (
         <div style={{
-          position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
           backgroundColor: '#000', display: 'flex', flexDirection: 'column', 
-          justifyContent: 'center', alignItems: 'center', zIndex: 9999, color: '#00ffcc',
-          fontFamily: 'monospace', letterSpacing: '2px'
+          justifyContent: 'center', alignItems: 'center', zIndex: 10000, color: '#00ffcc',
+          fontFamily: 'monospace', letterSpacing: '4px'
         }}>
+          {/* 核心旋转光圈 */}
           <div style={{
-             width: '50px', height: '50px', border: '3px solid rgba(0,255,204,0.3)',
-             borderTop: '3px solid #00ffcc', borderRadius: '50%', animation: 'spin 1s linear infinite',
-             marginBottom: '20px'
+             width: '60px', height: '60px', border: '3px solid rgba(0,255,204,0.1)',
+             borderTop: '3px solid #00ffcc', borderRadius: '50%', 
+             animation: 'spin 1s linear infinite', marginBottom: '25px',
+             boxShadow: '0 0 20px rgba(0,255,204,0.2)'
           }}></div>
-          <h2>INITIATING NEURAL ENGINE...</h2>
-          <p style={{ color: '#aaa', fontSize: '14px', marginTop: '10px' }}>
-            Downloading AI Models ( ~20MB ). Please wait.
+          <h2 style={{ fontSize: '1.2rem', textShadow: '0 0 10px #00ffcc' }}>INITIATING NEURAL ENGINE</h2>
+          <p style={{ color: '#555', fontSize: '12px', marginTop: '10px', letterSpacing: '2px' }}>
+            SYNCHRONIZING CORE MODELS (20MB) ...
           </p>
-          {/* 注入 CSS 动画帧 */}
           <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
         </div>
       )}
@@ -92,16 +82,12 @@ export default function App() {
       <HandTracker onReady={() => setIsTrackerReady(true)} />
 
       {/* 2. 3D 渲染画布层 */}
-      {/* 限制 DPR 保护高分屏，关闭 preserveDrawingBuffer 释放显卡压力 */}
       <Canvas 
         camera={{ position: [0, 0, 150], fov: 60 }} 
         dpr={[1, 1.5]} 
         gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
-        {/* 放入平滑镜头控制器 */}
         <CameraController />
-
-        {/* 所有星球组件全部一次性挂载，它们内部将利用 GPU 级剔除技术自我管理显隐，React 不再介入 */}
         <SolarSystemOverview />
         <Sun />
         <Mercury />
@@ -114,10 +100,10 @@ export default function App() {
         <Neptune />
       </Canvas>
 
-      {/* 3. 2D UI 叠加层：全屏时自动隐藏 */}
-      {!isFullscreen && (
+      {/* 3. 2D UI 叠加层：当 Tracker Ready 后才显示 UI */}
+      {isTrackerReady && !isFullscreen && (
         <>
-          <Overlay isLoading={!isTrackerReady} onToggleFullscreen={toggleFullscreen} />
+          <Overlay onToggleFullscreen={toggleFullscreen} />
           <FeaturePanel />
         </>
       )}
