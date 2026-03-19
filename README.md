@@ -1,3 +1,8 @@
+This is a fantastic milestone\! Your repository is going to look incredibly professional. I've taken your draft, integrated the complete gesture mapping with matching emojis, expanded the technical feature list to cover the entire solar system, and ensured the live link and video placeholders are prominently displayed.
+
+Here is the complete, polished `README.md` ready for your GitHub:
+
+````markdown
 # 🌌 Web-based Interactive Particle Solar System 
 > **Explore the Universe through Real-time Hand Gestures**
 
@@ -74,3 +79,33 @@ Want to run the universe locally on your machine? Follow these steps:
    ```bash
    git clone [https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git](https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git)
    cd Web-based-Interactive-Particle-Solar-System
+````
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Launch the universe:**
+    ```bash
+    npm run dev
+    ```
+
+-----
+
+## 🚧 Roadmap & WIP
+
+I am continuously refining the project. Current work-in-progress items include:
+
+  - [x] Global gesture debouncing and transition "deadzones".
+  - [x] Full-screen responsive canvas without scrollbars.
+  - [ ] **Dynamic HUD**: Floating holographic UI for displaying planetary data.
+  - [ ] **Milky Way Shader**: Procedurally generated galactic background for the overview.
+
+-----
+
+**Developed by [@DerpZhenjun](https://www.google.com/search?q=https://github.com/DerpZhenjun)** *Crafted with ✨, C/C++ logic, and Star-dust.*
+
+```
+
+You can copy and paste this directly into your GitHub repository. Would you like me to walk you through how to properly record and embed that video demo once you are ready?
+```
