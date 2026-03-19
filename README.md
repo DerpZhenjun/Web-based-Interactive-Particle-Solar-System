@@ -29,6 +29,9 @@ This project transforms the standard web experience into a touchless, immersive 
 
 The navigation system utilizes a custom "Strict State" detection algorithm to prevent accidental triggers during hand movement transitions. Use your camera to control the cosmos:
 
+Here is a visual reference for the corresponding hand gestures:
+
+![Hand Gesture Cheat Sheet](./src/assets/gesture.png)
 ### 🪐 Planetary Navigation (1-9)
 - ☝️ **1 Finger (Index Up)**: Travel to the **Sun**.
 - ✌️ **2 Fingers (Victory)**: Visit **Mercury**.
