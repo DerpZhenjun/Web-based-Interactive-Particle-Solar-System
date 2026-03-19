@@ -75,7 +75,7 @@ Want to run the universe locally on your machine? Follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git](https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git)
+   git clone https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git
    cd Web-based-Interactive-Particle-Solar-System
 
 2.  **Install dependencies:**
