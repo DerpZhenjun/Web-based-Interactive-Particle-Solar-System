@@ -71,18 +71,23 @@ The engine utilizes custom **Vertex** and **Fragment Shaders** to implement uniq
 
 ## 🛠️ Installation & Running
 
-Want to run the universe locally on your machine? Follow these steps:
+It is highly recommended to use [Conda](https://docs.conda.io/en/latest/) to create a dedicated virtual environment, ensuring a clean setup for Node.js dependencies.
 
-1. **Clone the repository:**
+1. **Create and activate a Conda virtual environment (with Node.js):**
+   ```bash
+   conda create -n solar-system nodejs=20
+   conda activate solar-system
+
+2. **Clone the repository:**
    ```bash
    git clone https://github.com/DerpZhenjun/Web-based-Interactive-Particle-Solar-System.git
    cd Web-based-Interactive-Particle-Solar-System
 
-2.  **Install dependencies:**
+3.  **Install dependencies:**
     ```bash
     npm install
     ```
-3.  **Launch the universe:**
+4.  **Launch the universe:**
     ```bash
     npm run dev
     ```
