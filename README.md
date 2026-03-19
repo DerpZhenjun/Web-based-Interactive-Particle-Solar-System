@@ -43,7 +43,6 @@ The navigation system utilizes a custom "Strict State" detection algorithm to pr
 ### 🎮 System Controls
 - 🛑 **Four Fingers Closed (Stop)**: Return to **Home / Solar System Overview**.
 - 🤏 **Pinch & Move**: Dynamic Scaling, Zooming, and panning around the current planet.
-- ✊ **Fist**: Freeze rotation / Enter Idle animation state.
 - 🖖 **Vulcan Greeting**: *[Hidden Easter Egg]* Try this while looking at Earth!
 
 ---
