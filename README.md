@@ -31,7 +31,8 @@ The navigation system utilizes a custom "Strict State" detection algorithm to pr
 
 Here is a visual reference for the corresponding hand gestures:
 
-![Hand Gesture Cheat Sheet](./src/assets/gesture.png)
+<img src="./src/assets/gesture.png" width="300">
+
 ### 🪐 Planetary Navigation (1-9)
 - ☝️ **1 Finger (Index Up)**: Travel to the **Sun**.
 - ✌️ **2 Fingers (Victory)**: Visit **Mercury**.
