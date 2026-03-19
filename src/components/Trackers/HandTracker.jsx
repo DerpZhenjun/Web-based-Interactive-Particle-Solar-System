@@ -19,7 +19,13 @@ export default function HandTracker({ onReady }) {
 
     if (!Hands || !Camera) return;
 
-    const hands = new Hands({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}` });
+    const hands = new Hands({
+        locateFile: (file) => {
+        // import.meta.env.BASE_URL 会自动处理本地开发环境 ('/') 
+        // 以及 GitHub Pages 线上环境 ('/Web-based-Interactive-Particle-Solar-System/') 的路径前缀差异
+        return `${import.meta.env.BASE_URL}mediapipe/${file}`;
+        }
+    });
     hands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.75, minTrackingConfidence: 0.75 });
 
     const dist = (p1, p2) => Math.hypot(p1.x - p2.x, p1.y - p2.y);
