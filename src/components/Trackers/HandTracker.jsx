@@ -19,11 +19,12 @@ export default function HandTracker({ onReady }) {
 
     if (!Hands || !Camera) return;
 
-    const hands = new Hands({
+const hands = new Hands({
         locateFile: (file) => {
-        // import.meta.env.BASE_URL 会自动处理本地开发环境 ('/') 
-        // 以及 GitHub Pages 线上环境 ('/Web-based-Interactive-Particle-Solar-System/') 的路径前缀差异
-        return `${import.meta.env.BASE_URL}mediapipe/${file}`;
+            // 终极形态：域名 + Vite动态基路径 + 文件夹 + 文件名
+            // 本地：http://localhost:5173/mediapipe/xxx.wasm
+            // 线上：https://derpzhenjun.github.io/Web-based-Interactive-Particle-Solar-System/mediapipe/xxx.wasm
+            return `${window.location.origin}${import.meta.env.BASE_URL}mediapipe/${file}`;
         }
     });
     hands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.75, minTrackingConfidence: 0.75 });
