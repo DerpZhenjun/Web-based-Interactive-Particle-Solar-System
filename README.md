@@ -104,5 +104,3 @@ I am continuously refining the project. Current work-in-progress items include:
   - [ ] **Milky Way Shader**: Procedurally generated galactic background for the overview.
 
 -----
-
-**Developed by [@DerpZhenjun](https://www.google.com/search?q=https://github.com/DerpZhenjun)** *Crafted with ✨, C/C++ logic, and Star-dust.*
