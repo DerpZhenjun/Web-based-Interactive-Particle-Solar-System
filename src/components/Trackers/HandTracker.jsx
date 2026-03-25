@@ -32,12 +32,13 @@ export default function HandTracker({ onReady }) {
           return `${import.meta.env.BASE_URL}mediapipe/`;
         }
 
-        // 2. 线上环境：测速节点池
+        // 2. 线上环境：测速节点池 (⚠️ 已调整优先级！)
+        // 必须把带有硬件加速头 (COOP/COEP) 的 CDN 放在前面
         const nodes = [
-          `${import.meta.env.BASE_URL}mediapipe/`,             // 节点A：GitHub Pages 自身服务器 (可能慢)
-          `https://fastly.jsdelivr.net/npm/@mediapipe/hands/`, // 节点B：Fastly CDN (国内连通率极高，速度快)
-          `https://cdn.jsdelivr.net/npm/@mediapipe/hands/`,    // 节点C：JsDelivr 全球节点 (国际通用备用)
-          `https://unpkg.com/@mediapipe/hands/`                // 节点D：Unpkg (终极保底)
+          `https://fastly.jsdelivr.net/npm/@mediapipe/hands/`, // 🥇 优选：Fastly CDN (国内极速 + 满血硬件加速)
+          `https://cdn.jsdelivr.net/npm/@mediapipe/hands/`,    // 🥈 备选：JsDelivr 全球节点 (满血硬件加速)
+          `${import.meta.env.BASE_URL}mediapipe/`,             // 🥉 兜底：GitHub Pages 自身服务器 (虽然慢且没加速，但绝不报 404)
+          `https://unpkg.com/@mediapipe/hands/`                // 💀 绝境：Unpkg (终极保底)
         ];
 
         for (const url of nodes) {
