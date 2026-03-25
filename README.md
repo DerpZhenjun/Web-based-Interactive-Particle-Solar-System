@@ -11,8 +11,11 @@
 
 ## 📺 Video Demonstration
 
-> **[Video Coming Soon]** > *A full demonstration video showcasing the real-time hand tracking and particle physics will be uploaded here shortly. Stay tuned!*
+Click the image below to watch the full demonstration on **Bilibili**, showcasing real-time hand tracking and interactive particle physics in action!
 
+[![Interactive Particle Solar System Demo](src/assets/demo_video.png)](https://www.bilibili.com/video/BV1rwQ2BFEhX/)
+
+> *If you are unable to view the video via the link above, it captures the seamless blending of MediaPipe hand gestures with a high-performance Three.js particle simulation.*
 ---
 
 ## 🌟 Project Overview
